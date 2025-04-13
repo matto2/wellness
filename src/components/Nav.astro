@@ -74,7 +74,6 @@ const navItems = [
     mobileMenu?.classList.toggle("shadow-lg");
     mobileMenu?.classList.toggle("z-50");
     mobileMenu?.classList.toggle("p-4");
-    mobileMenu?.classList.toggle("space-y-4");
     mobileMenu?.classList.toggle("items-center");
   });
 </script>
@@ -86,6 +85,8 @@ const navItems = [
     }
     #mobile-menu.flex {
       display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
     #mobile-menu a {
       display: inline-block;
