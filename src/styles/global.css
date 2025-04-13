@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+h1 {
+    font-family: 'Mulish Variable', sans-serif;
+    font-weight: 600;}
+
+h2 {
+    font-family: 'Mulish Variable', sans-serif;
+    font-weight: 600;
+    color: #cc926a;
+}
+
+nav {
+    font-family: 'Mulish Variable', sans-serif;
+    font-weight: 300;
+}    
+
+body {
+font-family: 'Mulish Variable', sans-serif;
+font-weight: 300;
+color: var(--text-dark);  
+}
+
+#policyOverlay {
+    z-index: 100;
+  }
+
+  /* #bookNowContainer.hidden {
+    display: none !important;
+  }  */
+
+  :root {
+    --brand-primary: #9daf92;
+    --brand-dark: #839975;
+    --brand-accent: #cc926a;
+    --text-light: #f5f5f4;
+    --text-medium: #78716c;
+    --text-dark: #44403c;
+    --brand-light: #c6d0bf;
+  }
+
+  .bg-brand-primary {
+    background-color: var(--brand-primary);
+}
+
+.bg-brand-light {
+    background-color: var(--brand-light);
+}
+
+.bg-brand-dark {
+    background-color: var(--brand-dark)  !important;
+}
+
+.hover\:bg-brand-dark:hover {
+    background-color: var(--brand-dark);
+}
+
+.text-text-dark {
+    color: var(--text-dark);
+}
+
+.text-brand-primary {
+    color: var(--brand-primary);
+}
+
+.text-brand-accent {
+    color: var(--brand-accent);
+}
+
+.text-text-light {
+    color: var(--text-light);
+}
+
+.text-text-medium {
+    color: var(--text-medium);
+}
+
+.bg-brand-primary {
+    background-color: var(--brand-primary);
+}
+
+.bg-brand-dark {
+    background-color: var(--brand-dark);
+}
+
+.bg-brand-accent {
+    background-color: var(--brand-accent);
+}
+
+.active_link
+{
+    border-bottom: 2px solid var(--brand-accent);
+    color: var(--brand-accent);
+    font-weight: 700;
+}
+
+/* a {
+    text-decoration: none;
+    color: #bf7644;
+} */

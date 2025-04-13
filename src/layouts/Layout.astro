@@ -1,0 +1,170 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+// import { ClientRouter } from "astro:transitions";
+
+import "@fontsource/kaushan-script";
+import "@fontsource/poppins";
+import "@fontsource/poppins/300.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+// Supports weights 200-900
+import "@fontsource-variable/nunito";
+import "@fontsource-variable/mulish";
+
+// Get the current URL path
+const { title } = Astro.props;
+const currentPage = Astro.url.pathname; // This gives the current route (e.g., "/about")
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Samaya Cullerton is a licensed acupuncturist and herbalist in Santa Cruz, CA, offering holistic treatments including acupuncture, herbal medicine, cupping, and more."
+    />
+
+    <!-- Open Graph (for social preview + SEO) -->
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Offering acupuncture, herbalism, cupping, and traditional Chinese medicine in Santa Cruz, CA. Specializing in women's health, prenatal, and pediatric care."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://samayacullerton.com{Astro.url.pathname}"
+    />
+    <meta
+      property="og:image"
+      content="https://samayacullerton.com/images/samaya-og.jpg"
+    />
+    <style type="text/css">
+      .active_link {
+        border-bottom: 2px solid var(--brand-accent);
+        color: var(--brand-accent);
+        font-weight: 800;
+      }
+    </style>
+    <script type="text/javascript">
+      // RJN
+      document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("nav > div > a");
+        if (links !== null) {
+          Array.from(links).forEach((link, idx) => {
+            // remove previous
+            link.classList.remove("active_link");
+
+            // the link element
+            let link_href = link
+              .getAttribute("href")
+              .toString()
+              .toLowerCase()
+              .substring(1);
+
+            let href = window.location.href;
+            if (href[href.length - 1] === "/") {
+              href = href.substring(1);
+            }
+            const path_elements = href.split("/");
+            const path = path_elements[path_elements.length - 1];
+            const path2 = path_elements[path_elements.length - 2];
+
+            if (link_href === path || link_href === path2) {
+              console.log("PATH NAME: " + window.location.pathname);
+              console.log("PATH" + path);
+              if (
+                window.location.pathname.trim() === "" ||
+                window.location.pathname.trim() === "/"
+              ) {
+                if (idx === 0) {
+                  link.classList.add("active_link");
+                }
+              } else {
+                if (idx > 0) {
+                  link.classList.add("active_link");
+                }
+              }
+            }
+          });
+        }
+      });
+    </script>
+  </head>
+  <!-- <ClientRouter /> -->
+  <body class="bg-stone-50 relative">
+    <div class="hidden hover:bg-brand-primary"></div>
+    <!-- Background Gradient (Full Width, 400px Height, Fades to Transparent at Bottom) -->
+    <div class="absolute top-0 right-0 w-full h-screen">
+      <div class="flex
+      flex-col
+      min-h-screen
+      relative">
+        <!-- Main Content -->
+        <main class="flex-grow max-w-7xl mx-auto w-full relative">
+          <Nav currentPage={currentPage} />
+          <!-- Pass the current page -->
+          <h2></h2>
+          <slot />
+        </main>
+
+        <!-- Footer remains inside the flex container -->
+        <Footer />
+      </div>
+
+      <script src="/src/scripts/fslightbox.js"></script>
+      <!-- Cal element-click embed code -->
+      <script type="text/javascript">
+        (function (C, A, L) {
+          let p = function (a, ar) {
+            a.q.push(ar);
+          };
+          let d = C.document;
+          C.Cal =
+            C.Cal ||
+            function () {
+              let cal = C.Cal;
+              let ar = arguments;
+              if (!cal.loaded) {
+                cal.ns = {};
+                cal.q = cal.q || [];
+                d.head.appendChild(d.createElement("script")).src = A;
+                cal.loaded = true;
+              }
+              if (ar[0] === L) {
+                const api = function () {
+                  p(api, arguments);
+                };
+                const namespace = ar[1];
+                api.q = api.q || [];
+                if (typeof namespace === "string") {
+                  cal.ns[namespace] = cal.ns[namespace] || api;
+                  p(cal.ns[namespace], ar);
+                  p(cal, ["initNamespace", namespace]);
+                } else p(cal, ar);
+                return;
+              }
+              p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+
+        Cal("init", "1-hour-session", { origin: "https://cal.com" });
+
+        Cal.ns["1-hour-session"]("ui", {
+          theme: "light",
+          cssVarsPerTheme: { light: { "cal-brand": "#86198F" } },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      </script>
+    </div>
+  </body>
+</html>
