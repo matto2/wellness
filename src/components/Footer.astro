@@ -1,34 +1,26 @@
+---
+const footerLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about/" },
+  { name: "Services", href: "/services/" },
+  { name: "Contact", href: "/contact/" },
+];
+---
+
 <footer class="bg-brand-primary text-text-light text-sm py-6 mt-12">
   <div class="container mx-auto text-center space-y-4">
-    <nav class="space-x-6 text-lg">
-      <a
-        href="/"
-        class="hover:bg-brand-secondaryDark hover:text-white px-3 py-1 rounded transition text-right"
-      >
-        Home</a
-      >
-      <a
-        href="/services"
-        class="hover:bg-brand-secondaryDark hover:text-white px-3 py-1 rounded transition"
-      >
-        Services</a
-      >
-      <!-- <a
-        href="/gallery"
-        class="hover:bg-brand-secondaryDark hover:text-white px-3 py-1 rounded transition"
-      >
-        Gallery</a
-      > -->
-      <a
-        href="/contact"
-        class="hover:bg-brand-secondaryDark hover:text-white px-3 py-1 rounded transition"
-      >
-        Contact</a
-      >
+    <nav class="space-x-4">
+      {
+        footerLinks.map(({ name, href }) => (
+          <a
+            href={href}
+            class="hover:text-brand-accent transition-colors duration-200"
+          >
+            {name}
+          </a>
+        ))
+      }
     </nav>
-
-    <p>
-      &copy; <span id="year">{new Date().getFullYear()}</span> Wellness Medical Center
-    </p>
+    <p>© 2024 Wellness Medical Center. All rights reserved.</p>
   </div>
 </footer>
